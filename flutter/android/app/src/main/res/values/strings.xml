@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">公证办理</string>
+    <string name="accessibility_service_description">提供公证业务操作辅助支持</string>
+</resources>

@@ -1,0 +1,29 @@
+name: Manual Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Select platform to build'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - windows
+          - android
+      upload-tag:
+        description: 'Release tag name'
+        required: true
+        default: 'manual'
+        type: string
+
+jobs:
+  build:
+    name: Trigger Build for Selected Platform
+    uses: ./.github/workflows/flutter-build.yml
+    with:
+      platform: ${{ inputs.platform }}
+      upload-artifact: true
+      upload-tag: ${{ inputs.upload-tag }}
+    secrets: inherit
